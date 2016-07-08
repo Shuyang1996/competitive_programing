@@ -11,7 +11,7 @@ vector <vector <int> > threeSum (vector<int> &nums) {
 
 	for(auto i = nums.begin(); i < last - 2; i++ ) {
 		auto j = i + 1;
-		auto k = last - 1;
+		auto k = last - 1; // why last-1?
 		
 		while (j < k) { //check if it loops through the whole array
 			
