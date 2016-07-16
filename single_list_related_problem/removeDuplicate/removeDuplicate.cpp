@@ -21,18 +21,13 @@ class Node {
 		}
 };
 
-Node * partitionList(Node * list, int target) {
-
-};
-
 int main () {
-
 	Node * number1 = new Node(1);
-	Node * number2 = new Node(4);
-	Node * number3 = new Node(3);
-	Node * number4 = new Node(2);
-	Node * number5 = new Node(5);
-	Node * number6 = new Node(2);
+	Node * number2 = new Node(1);
+	Node * number3 = new Node(2);
+	Node * number4 = new Node(3);
+	Node * number5 = new Node(3);
+	Node * number6 = new Node(3);
 
 	number1->setNext(number2);
 	number2->setNext(number3);
@@ -56,7 +51,5 @@ int main () {
 
 	Node * number_6 =  number_5->getNext();
 	cout << number_6->getVal() << endl;
-
-
 	return 0;
 }
