@@ -1,15 +1,16 @@
 #include <iostream>
 #include <string>
+#include <cctype>                                                
 using namespace std;
 
 bool checkPalindrome(string s){
 	transform(s.begin(), s.end(), s.begin(), ::tolower);
-	auto left = s.begin(), right = prev(s.end());
+	auto left = s.begin(), right = s.end(); //prev(s.end()); ??
 	while ( left < right ) {
-		if(!::isalnum(*left)) ++left;
-		else if(!::isalnum(*right)) --right;
+		if(!isalnum(*left)) ++left;
+		else if(!isalnum(*right)) --right;
 		else if(*left != *right) return false;
-		else { left++, right--;}
+		else { left++, right--;} // left equals right.
 	}
 	return true;
 };
