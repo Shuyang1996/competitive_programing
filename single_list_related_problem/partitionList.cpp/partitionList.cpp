@@ -22,7 +22,11 @@ class Node {
 };
 
 Node * partitionList(Node * list, int target) {
+	//create intial node as a start;
+	Node inital(0);
+	Node * ptr = &initial;
 
+	while()
 };
 
 int main () {
@@ -60,3 +64,5 @@ int main () {
 
 	return 0;
 }
+
+
