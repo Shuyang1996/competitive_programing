@@ -4,9 +4,19 @@
 
 using namespace std;
 
+
+int myatoi( const string &s) {
+	int i = 0;
+	int size =  s.size();
+
+	while(s[i]==' ' && i < size ) i++; // ignore space in front until hits first non space string.
+	return 0;
+};	
+
+
 int main () {
 
-	char buffer[256] = "456";
-	cout << atoi(buffer) << endl;
+	string str = "456a";
+	cout << str.size() << endl;
 	return 0;
 }
