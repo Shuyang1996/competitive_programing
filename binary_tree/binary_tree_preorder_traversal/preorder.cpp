@@ -25,7 +25,6 @@ class TreeNode {
 		}
 };
 
-
 vector <string> preorderTraversal ( TreeNode * root) {
 	vector <string> result;
 	stack < TreeNode * > s;
@@ -63,7 +62,7 @@ int main () {
 
 	a->setRight(c);
 	a->setLeft(b);
-	
+
 	b->setRight(d);
 
 	c->setRight(f);
