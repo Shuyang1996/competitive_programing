@@ -1,8 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <stack>
-#include <string>
-
 using namespace std;
 
 class TreeNode {
@@ -10,6 +7,7 @@ class TreeNode {
 		string val;
 		TreeNode * left;
 		TreeNode * right;
+
 		TreeNode (string x) : val(x) , left(nullptr), right(nullptr) {};
 		
 		void setLeft( TreeNode * leftNode ) {
@@ -20,32 +18,36 @@ class TreeNode {
 			right = rightNode;
 		}
 
+		TreeNode * getLeft(){
+			return left;
+		}
+
+		TreeNode * getRight(){
+			return right;
+		}
+
 		string getVal() {
 			return val;
 		}
 };
 
-vector <string> preorderTraversal ( TreeNode * root) {
-	vector <string> result;
-	stack < TreeNode * > s;
+void levelOrderFunction(TreeNode * root, int level, vector< vector <string> > &result ){
+	if(!root) return; //no more left subtree exist
+	if(level > result.size() ) result.push_back(vector<string>()); // enter an empty vector space in one of vector cells
 	
-	if( root !=  nullptr ) {
-		s.push(root);
-	}
+	result[level-1].push_back(root->getVal());
+	
+	levelOrderFunction(root->getLeft(), level+1, result);
+	levelOrderFunction(root->getRight(), level+1, result);
+};	
 
-	while (! s.empty() ) {
-		TreeNode * ptr = s.top();
-		s.pop();
-		result.push_back( ptr->getVal() );
-
-		if(ptr->right != nullptr ) s.push(ptr->right);
-		if(ptr->left != nullptr ) s.push(ptr->left);
-	}
-
-
+vector < vector <string> > levelOrder (TreeNode * root) {
+	vector < vector <string> > result;
+	levelOrderFunction( root, 1, result); // function overloading; 
 	return result;
- 		
-};
+};	
+
+
 
 int main () {
 	//create a binary tree first
@@ -60,7 +62,6 @@ int main () {
 	TreeNode * h = new TreeNode ("H");
 	TreeNode * i = new TreeNode ("I");
 
-
 	a->setRight(c);
 	a->setLeft(b);
 
@@ -74,18 +75,18 @@ int main () {
 	f->setLeft(h);
 	f->setRight(i);
 
-	vector <string> result = preorderTraversal(a);
+	vector < vector <string> > result;
+	result = levelOrder(a);
 
+	vector <string>::iterator ptr;
 	for(int i = 0; i < result.size(); i++ ) {
-		cout << result[i] << endl;
+		
+		for(ptr = result[i].begin(); ptr!= result[i].end(); ptr++){
+			cout << *ptr << endl;
+		}
+
+		cout << "" << endl;
 	}
-
-	//test if this structure works
-	// cout << root->getVal() << endl;
-	// cout << firstChild->getVal() << endl;
-	// cout << secondChild->getVal() << endl;
-
-
 
 	return 0;
 }
