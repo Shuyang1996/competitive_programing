@@ -80,12 +80,5 @@ int main () {
 		cout << result[i] << endl;
 	}
 
-	//test if this structure works
-	// cout << root->getVal() << endl;
-	// cout << firstChild->getVal() << endl;
-	// cout << secondChild->getVal() << endl;
-
-
-
 	return 0;
 }
